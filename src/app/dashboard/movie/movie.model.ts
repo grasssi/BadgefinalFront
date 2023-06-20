@@ -25,6 +25,15 @@ export interface Movie {
     video: boolean;
     vote_average: number;
     vote_count: number;
+    code_payes :string;
+    idf_emt:string;
+    toc:string;
+    vcontext:string;
+    code_efccm:string;
+    code_toc:string;
+    badge:string;
+    emt:string;
+    modele:string;
 }
 
 interface BelongsToCollection {

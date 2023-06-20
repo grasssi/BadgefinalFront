@@ -29,16 +29,20 @@ export const DashboardRoutes: Routes = [
             {
                 path: 'product',
                 loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
-            }
+            },
+            {
+                path: 'badge',
+                loadChildren: () => import('./badge/badge.module').then(m => m.BadgeModule)
+            },
         ]
     }
 ];
 
 @NgModule({
-    imports: [ RouterModule.forChild(DashboardRoutes) ],
-    exports: [ RouterModule ]
+    imports: [RouterModule.forChild(DashboardRoutes)],
+    exports: [RouterModule]
 })
 
 export class DashboarRoutingModule {
-  static components = [DashboardComponent, HomeComponent];
+    static components = [DashboardComponent, HomeComponent];
 }

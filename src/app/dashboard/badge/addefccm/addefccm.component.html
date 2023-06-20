@@ -1,0 +1,141 @@
+<div class="carded">
+    <div class="top-bg accent"></div>
+
+    <div class="center">
+        <div class="header accent">
+            <!-- <div>
+                <button mat-icon-button (click)="navigateToListPage()">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div>
+                    <h2>{{ customer ? customer.name : 'Customer' }}</h2>
+                    <p>Customer Detail</p>
+                </div>
+            </div> -->
+
+            <div>
+                <button type="button" mat-raised-button class="u-margin-l-8" [disabled]="efccmForm.invalid"
+                    (click)="addEfccm()">
+                    <span>ADD</span>
+                </button>
+
+                <button type="button" mat-raised-button class="u-margin-l-8"
+                    [disabled]="efccmForm.invalid || efccmForm.pristine">
+                    <span>SAVE</span>
+                </button>
+
+                <button type="button" mat-raised-button class="u-margin-l-8">
+                    <span>DELETE</span>
+                </button>
+            </div>
+        </div>
+
+        <perfect-scrollbar class="content-card">
+            <form [formGroup]="efccmForm" class="vertical-fit">
+                <fieldset>
+                    <mat-tab-group>
+                        <mat-tab label="Basic Information">
+                            <div class="u-padding-16">
+                                <!-- <mat-form-field style="width: 100%">
+
+
+
+
+                                    <mat-select atInput placeholder="Emetteur" [(ngModel)]="emt"
+                                        [ngModelOptions]="{standalone: true}"
+                                        (selectionChange)="onParentSelectChange($event)">
+                                        <mat-error *ngIf="false" class="form-control-feedback">
+                                            Required field
+                                        </mat-error>
+                                        <mat-option>choisir un emetteur</mat-option>
+                                        <mat-option value="TELEPASS">TELEPASS</mat-option>
+                                        <mat-option value="DKV">DKV</mat-option>
+                                        <mat-option value="EUROTOLL">EUROTOLL</mat-option>
+                                        <mat-option value="TOTAL">TOTAL</mat-option>
+                                        <mat-option value="AXXES">AXXES</mat-option>
+                                    </mat-select>
+
+
+                                </mat-form-field> -->
+
+
+
+                                <mat-form-field style="width: 100%">
+                                    <mat-label>Modele</mat-label>
+
+                                    <mat-select formControlName="badge" placeholder="Modele" name="exam_title">
+                                        <mat-option *ngFor="let badge of myRes"
+                                            value="{{badge._id}}">{{badge.emt}}    {{badge.modele}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+
+
+
+                                <!-- <mat-form-field>
+                                    <mat-label>Parent Select</mat-label>
+                                    <mat-select formControlName="emt"
+                                        (selectionChange)="onParentSelectChange($event)">
+                                        <mat-option *ngFor="let parentOption of parentOptions"
+                                            [value]="parentOption.value">
+                                            {{ parentOption.label }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field>
+                                    <mat-label>Child Select</mat-label>
+                                    <mat-select formControlName="badge">
+                                        <mat-option *ngFor="let childOption of childOptions"
+                                            >
+                                            {{ childOption }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field> -->
+
+
+
+                               <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Code Pays ISO 3166-1" type="text"
+                                        formControlName="code_payes">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="dentifiant Emetteur (dans le pays)" type="text"
+                                        formControlName="idf_emt">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Required field
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput
+                                        placeholder="type de Contrat fixé par émetteur(TOC - Type Of Contract)"
+                                        type="text" formControlName="toc">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Invalid Email
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="Version du contexte" type="text"
+                                        formControlName="vcontext">
+                                    <mat-error *ngIf="false" class="form-control-feedback">
+                                        Invalid Email
+                                    </mat-error>
+                                </mat-form-field> 
+
+                              
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </fieldset>
+            </form>
+        </perfect-scrollbar>
+    </div>
+</div>
+<p>You selected: {{emt}} </p>

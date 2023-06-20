@@ -1,0 +1,65 @@
+<div class="carded">
+    <div class="top-bg accent"></div>
+
+    <div class="center">
+        <div class="header accent">
+            <h2>Movies</h2>
+
+            <div>
+                <button type="button" mat-raised-button class="u-margin-l-8">
+                    <mat-icon>delete</mat-icon>DELETE
+                </button>
+                
+                <button type="button" mat-raised-button class="u-margin-l-8">
+                    <mat-icon>edit</mat-icon>EDIT
+                </button>
+
+                <button type="button" mat-raised-button class="u-margin-l-8" (click)="onCustomerAddNavigate()">
+                    <mat-icon>add</mat-icon>ADD
+                </button>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <perfect-scrollbar>
+                <mat-table [dataSource]="data" matSort class="vertical-fit">
+                    <ng-container matColumnDef="emt">
+                        <mat-header-cell fxFlex="25" *matHeaderCellDef> Emetteur </mat-header-cell>
+                        <mat-cell fxFlex="25" *matCellDef="let movie"> {{movie.emt}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="modele">
+                        <mat-header-cell *matHeaderCellDef> Modele </mat-header-cell>
+                        <mat-cell *matCellDef="let movie"> {{movie.modele | slice:0:50}} </mat-cell>
+                    </ng-container>
+
+                    <!-- <ng-container matColumnDef="vcontext">
+                        <mat-header-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matHeaderCellDef> Popularity </mat-header-cell>
+                        <mat-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matCellDef="let movie"> {{movie.vcontext}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="code_efccm">
+                        <mat-header-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matHeaderCellDef> Vote average </mat-header-cell>
+                        <mat-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matCellDef="let movie"> {{movie.code_efccm}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="code_toc">
+                        <mat-header-cell fxFlex="15" fxHide.lt-md *matHeaderCellDef> Release date </mat-header-cell>
+                        <mat-cell fxFlex="15" fxHide.lt-md *matCellDef="let movie"> {{movie.code_toc}} </mat-cell>
+                    </ng-container> -->
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onMovieDetailNavigate(row)"></mat-row>
+                </mat-table>
+            </perfect-scrollbar>
+            
+            <mat-paginator #paginator
+                           showFirstLastButtons
+                           [length]=0
+                           [pageIndex]=0
+                           [pageSize]=0
+                           (page)="($event)">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

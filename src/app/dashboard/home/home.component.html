@@ -1,1 +1,125 @@
-<h3>HOME</h3>
+<div class="carded">
+    <div class="top-bg accent"></div>
+
+    <div class="center">
+        <div class="header accent">
+            <h2>Table123</h2>
+            <form [formGroup]="efccmForm">
+
+
+                <div class="col offset-3">
+                    <label for="table-select">Choose a table:</label>
+
+                    <select name="tables" id="table-select" formControlName="table">
+                        <option value="">--Please choose an option--</option>
+                        <option value="TOC">TOC</option>
+                        <option value="efccm">EFC-CM</option>
+                        <option value="badge">Badge</option>
+                    </select>
+
+                </div>
+            </form>
+            <div>
+                <button type="button" mat-raised-button class="u-margin-l-8">
+                    <mat-icon>delete</mat-icon>DELETE
+                </button>
+
+                <button type="button" (click)="handleExport()" mat-raised-button class="u-margin-l-8">
+                    <mat-icon>edit</mat-icon>Export
+                </button>
+
+                <input (change)="handleImport($event)" type="file" name="file"  id="inputGroupFile" mat-raised-button class="u-margin-l-8" 
+                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                >
+                <!-- <mat-icon class="custom-file-label" for="inputGroupFile" >add</mat-icon>ADD -->
+                    <!-- <input type="file" name="file" mat-raised-button class="u-margin-l-8" id="inputGroupFile" required
+                        (change)="handleImport($event)"
+                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"> -->
+                <!-- </button> -->
+                <!-- <label class="custom-file-label" for="inputGroupFile">Choose file</label> -->
+
+                <!-- <div class="col-md-6">
+                    <button (click)="handleExport()" class="btn btn-primary float-right">
+                        Export <i class="fa fa-download"></i>
+                    </button>
+                </div> -->
+            </div>
+            
+        </div>
+      
+        <div class="content-card">
+        <!--    <perfect-scrollbar>
+                <mat-table [dataSource]="dataSource" matSort class="vertical-fit">
+                    <ng-container matColumnDef="title">
+                        <mat-header-cell fxFlex="25" *matHeaderCellDef> Title </mat-header-cell>
+                        <mat-cell fxFlex="25" *matCellDef="let movie"> {{movie.title}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="overview">
+                        <mat-header-cell *matHeaderCellDef> Overview </mat-header-cell>
+                        <mat-cell *matCellDef="let movie"> {{movie.overview | slice:0:50}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="popularity">
+                        <mat-header-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matHeaderCellDef> Popularity </mat-header-cell>
+                        <mat-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matCellDef="let movie"> {{movie.popularity}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="vote_average">
+                        <mat-header-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matHeaderCellDef> Vote average </mat-header-cell>
+                        <mat-cell fxFlex="10" fxFlex.lt-md="15" fxHide.lt-sm *matCellDef="let movie"> {{movie.vote_average}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="release_date">
+                        <mat-header-cell fxFlex="15" fxHide.lt-md *matHeaderCellDef> Release date </mat-header-cell>
+                        <mat-cell fxFlex="15" fxHide.lt-md *matCellDef="let movie"> {{movie.release_date}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onMovieDetailNavigate(row)"></mat-row>
+                </mat-table>
+            </perfect-scrollbar>
+            
+            <mat-paginator #paginator
+                           showFirstLastButtons
+                           [length]=0
+                           [pageIndex]=0
+                           [pageSize]=0
+                           (page)="loadMovies($event)">
+            </mat-paginator> -->
+
+            <perfect-scrollbar>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th  scope="col">Id</th>
+                        <th scope="col">Table</th>
+                        <th scope="col">Badge</th>
+                        <th scope="col">Emetteur</th>
+                        
+                        <!-- <th scope="col">Director</th>
+                        <th scope="col">Rating</th>  -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngIf="tables.length; else elseBlock">
+                        <tr *ngFor="let table of tables; let i = index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{ table.table }}</td>
+                            <td>{{ table.Badge }}</td>
+                            <td>{{ table.Emetteur }}</td>
+                            <!-- <td>{{ movie.Director }}</td>
+                            <td><span class="badge bg-warning text-dark">{{ movie.Rating }}</span></td> -->
+                        </tr>
+                    </ng-container>
+                    <ng-template #elseBlock>
+                        <tr>
+                            <td colspan="5" class="text-center">No table Found.</td>
+                        </tr>
+                    </ng-template>
+                </tbody>
+            </table>
+        </perfect-scrollbar>
+        </div>
+    </div>
+</div>

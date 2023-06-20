@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  backend: {
-    host: 'https://demo0034835.mockable.io',
-  },
+  // backend: {
+  //   host: 'https://demo0034835.mockable.io',
+  // },
   oauth: {
     host: 'https://demo0034835.mockable.io',
     client_id: '2',
@@ -15,7 +15,8 @@ export const environment = {
   },
   movieDB: {
     host: 'https://api.themoviedb.org/3',
-  }
+  },
+  baseUrl : 'http://localhost:3000/api/v1'
 };
 
 /*

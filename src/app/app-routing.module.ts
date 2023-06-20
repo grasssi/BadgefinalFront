@@ -14,17 +14,18 @@ const appRoutes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    resolve: [Logged]
+    // resolve: [Logged]
   },
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'not-found',
     component: NotFoundComponent,
   },
+  
   {
     path: '**',
     redirectTo: 'not-found'
@@ -35,8 +36,8 @@ const appRoutes: Routes = [
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
   providers: [
-    AuthGuard,
-    Logged
+    // AuthGuard,
+    // Logged
   ]
 })
 export class AppRoutingModule { }
