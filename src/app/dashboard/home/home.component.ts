@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
      private efccmservice: EfccmService,
   ) { }
   handleImport($event: any) {
+    
     const files = $event.target.files;
     if (files.length) {
 
@@ -39,9 +40,10 @@ export class HomeComponent implements OnInit {
 
           for (let i = 0; i < this.tables.length; i++) {
             this.efccmForm.value.efccm = this.tables[i].table;
+            console.log('table type', this.efccmForm.value);
 
             this.efccmservice.found(this.efccmForm.value).subscribe((response: any) => {
-           //   console.log(response);
+            console.log('reponse',response);
               if (response == 'not found') {
                 this.tables[i].Badge = 'not found';
                 this.tables[i].Emetteur = 'not found';

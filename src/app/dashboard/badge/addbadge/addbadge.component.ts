@@ -30,7 +30,7 @@ export class AddbadgeComponent implements OnInit {
 
     this.badgeservice.addbadge(this.badgeForm.value).subscribe((response: any) => {
       // this.toasterService.pop('success', 'Success Login', response.message);
-     this.router.navigate(['/efccm']);
+     this.router.navigate(['/dashboard/badge/listbadge']);
     },
       (error: any) => {
         // this.toasterService.pop('error', 'Error', error.error.message);
