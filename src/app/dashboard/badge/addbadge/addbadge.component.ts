@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BadgeService } from 'src/app/core/services/badge.service';
 
@@ -13,10 +13,10 @@ export class AddbadgeComponent implements OnInit {
 
 
   badgeForm = new FormGroup({
-    emt: new FormControl(''),
-    modele: new FormControl(''),
-    code_fab: new FormControl(''),
-    classe_equipement: new FormControl('')
+    emt: new FormControl('', Validators.required),
+    modele: new FormControl('', Validators.required),
+    code_fab: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+    classe_equipement: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)])
   })
   constructor(
     private router: Router,
