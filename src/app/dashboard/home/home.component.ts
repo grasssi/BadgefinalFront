@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
 
 
   tables: any[] = [];
-  res:any=[]
-  newArr:any=[]
+  res:any[]=[]
+  newArr:any[]=[]
   constructor(
      private efccmservice: EfccmService,
   ) { }
@@ -56,15 +56,17 @@ export class HomeComponent implements OnInit {
                 for (let index = 0; index < response.length; index++) {
                   
                   this.res.push( response[index])
-                  const newArr = [...this.res];
+                  
+                  this.newArr[index].Emetteur =this.res[index]["0"].emt;
+                  this.newArr[index].Badge = this.res[index]["0"].modele;
                   
                   // console.log('es1',this.res[index]["0"].modele);
-                  this.tables[0].Emetteur =this.res[index]["0"].emt;
-                  this.tables[0].Badge = newArr[index]["0"].modele;
+                  this.tables[index].Emetteur =this.res[index]["0"].emt;
+                  this.tables[index].Badge = this.res[index]["0"].modele;
                   
                   // console.log('es2',Object.getOwnPropertyNames(newArr));
                 }
-                console.log('es1',this.tables);
+                console.log('es1',this.newArr);
                 
                 // console.log('reponse',  Object.values(this.res));
                 // console.log('reponse',  this.res[0].emt);
