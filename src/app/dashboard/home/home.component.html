@@ -93,7 +93,7 @@
                 <thead>
                     <tr>
                         <th  scope="col">Id</th>
-                        <th scope="col">Table</th>
+                        <!-- <th scope="col">Table</th> -->
                         <th scope="col">Badge</th>
                         <th scope="col">Emetteur</th>
                         
@@ -102,16 +102,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngIf="tables.length; else elseBlock">
+                    <!-- <ng-container *ngIf="tables.length; else elseBlock"> -->
                         <tr *ngFor="let table of tables; let i = index">
                             <th scope="row">{{ i + 1 }}</th>
-                            <td>{{ table.table }}</td>
+                            <!-- <td>{{ table.table }}</td> -->
                             <td>{{ table.Badge }}</td>
                             <td>{{ table.Emetteur }}</td>
                             <!-- <td>{{ movie.Director }}</td>
                             <td><span class="badge bg-warning text-dark">{{ movie.Rating }}</span></td> -->
                         </tr>
-                    </ng-container>
+                    <!-- </ng-container> -->
                     <ng-template #elseBlock>
                         <tr>
                             <td colspan="5" class="text-center">No table Found.</td>

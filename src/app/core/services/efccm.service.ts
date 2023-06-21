@@ -75,7 +75,7 @@ listbadge(pageIndex: number): Observable<Paginator<Movie>> {
   
   
   found(body: any) {
-    console.log(body.efccm)
+    // console.log(body.efccm)
     return this.httpClient.post(`${this.baseUrl}/foundefccm`, body)
   }
 

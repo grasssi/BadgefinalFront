@@ -19,9 +19,13 @@ export class HomeComponent implements OnInit {
 
 
   tables: any[] = [];
+  res:any=[]
   constructor(
      private efccmservice: EfccmService,
   ) { }
+
+
+  
   handleImport($event: any) {
     
     const files = $event.target.files;
@@ -36,20 +40,26 @@ export class HomeComponent implements OnInit {
         if (sheets.length) {
           const rows = utils.sheet_to_json(wb.Sheets[sheets[0]]);
           this.tables = rows;
-          console.log('table type', this.tables[1].table);
+          // console.log('table type', this.tables[1].table);
 
-          for (let i = 0; i < this.tables.length; i++) {
-            this.efccmForm.value.efccm = this.tables[i].table;
-            console.log('table type', this.efccmForm.value);
+          // for (let i = 0; i < this.tables.length; i++) {
+            this.efccmForm.value.efccm = this.tables[0].table;
+           // console.log('table type', this.efccmForm.value);
 
             this.efccmservice.found(this.efccmForm.value).subscribe((response: any) => {
-            console.log('reponse',response);
+            // console.log('reponse',response);
               if (response == 'not found') {
-                this.tables[i].Badge = 'not found';
-                this.tables[i].Emetteur = 'not found';
+                this.tables[0].Badge = 'not found';
+                this.tables[0].Emetteur = 'not found';
               } else {
-                this.tables[i].Badge = response.modele;
-                this.tables[i].Emetteur = response.emt;
+                for (let index = 0; index < response.length; index++) {
+                  this.res[0+index] = response[index].id;
+                console.log('reponse',response[index].emt);
+                  
+                }
+                // console.log('reponse',response);
+                this.tables[0].Badge = response.modele;
+                this.tables[0].Emetteur = response.emt;
               }
 
             },
@@ -58,7 +68,7 @@ export class HomeComponent implements OnInit {
               }
             );
 
-          }
+          // }
 
         }
       }
