@@ -73,8 +73,8 @@ export class HomeComponent implements OnInit {
                   //   this.tables[i].Badge = this.res[index]["0"].modele;
 
                   //   console.log('es2',Object.getOwnPropertyNames(this.tables));
-                  this.tables[i+index].Emetteur = response[index]["0"].emt;
-                  this.tables[i+index].Badge = response[index]["0"].modele;
+                  // this.tables[i+index].Emetteur = response[index]["0"].emt;
+                  // this.tables[i+index].Badge = response[index]["0"].modele;
                   // console.log(this.res[index]["0"].emt)
                   // console.log(response[index])
 
@@ -103,8 +103,8 @@ export class HomeComponent implements OnInit {
             }
             
           }
-          // console.log('res',this.res);
-          console.log('tables', this.tables);
+          console.log('res',this.res);
+          // console.log('tables', this.tables);
       }
       reader.readAsArrayBuffer(file);
     }
