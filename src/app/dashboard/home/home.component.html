@@ -92,7 +92,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <!-- <th  scope="col">Id</th> -->
+                        <th  scope="col">Id</th>
                         <!-- <th scope="col">Table</th> -->
                         <th scope="col">Badge</th>
                         <th scope="col">Emetteur</th>
@@ -104,7 +104,7 @@
                 <tbody>
                     <!-- <ng-container *ngIf="tables.length; else elseBlock"> -->
                         <tr *ngFor="let table of tables; let i = index">
-                            <!-- <th scope="row">{{ i + 1 }}</th> -->
+                            <th scope="row">{{ i + 1 }}</th>
                             <!-- <td>{{ table.table }}</td> -->
                             <td>{{ table.Badge }}</td>
                             <td>{{ table.Emetteur }}</td>
@@ -120,6 +120,7 @@
                 </tbody>
             </table>
         </perfect-scrollbar>
+        'resultat' {{res}}
         </div>
     </div>
 </div>

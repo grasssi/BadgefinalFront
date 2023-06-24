@@ -18,7 +18,9 @@ export interface AppData {
   horsres: string,
   nbutilisateur: string,
   application: string,
-  situation: string
+  situation: string,
+  emt:string,
+  modele:string,
 }
 export interface TableData extends Array<AppData> { }
 @Injectable({

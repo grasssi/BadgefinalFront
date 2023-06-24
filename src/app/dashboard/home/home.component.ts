@@ -4,7 +4,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
-import { EfccmService, } from '../../../app/core/services/efccm.service';
+import { EfccmService, TableData, } from '../../../app/core/services/efccm.service';
 
 @Component({
   selector: 'app-home',
@@ -19,16 +19,17 @@ export class HomeComponent implements OnInit {
 
 
   tables: any[] = [];
+  // res: any
+  // public res: TableData = [];
   res:any[]=[]
-  newArr:any[]=[]
   constructor(
-     private efccmservice: EfccmService,
+    private efccmservice: EfccmService,
   ) { }
 
 
-  
+
   handleImport($event: any) {
-    
+
     const files = $event.target.files;
     if (files.length) {
 
@@ -43,49 +44,67 @@ export class HomeComponent implements OnInit {
           this.tables = rows;
           // console.log('table type', this.tables[1].table);
 
-          // for (let i = 0; i < this.tables.length; i++) {
-            this.efccmForm.value.efccm = this.tables[0].table;
-           // console.log('table type', this.efccmForm.value);
-
+          this.res = []
+          for (let i = 0; i < this.tables.length; i++) {
+            this.efccmForm.value.efccm = this.tables[i].table;
+            // console.log('table type', this.efccmForm.value);
             this.efccmservice.found(this.efccmForm.value).subscribe((response: any) => {
-            // console.log('reponse',response);
-              if (response == 'not found') {
-                this.tables[0].Badge = 'not found';
-                this.tables[0].Emetteur = 'not found';
+              // console.log(response);
+              
+              // console.log('reponse',response);
+              if (response == 'not found' || response.length == 0) {
+                // this.tables[i].Badge = 'not found';
+                // this.tables[i].Emetteur = 'not found';
+                // this.res.push('not found')
+
               } else {
                 for (let index = 0; index < response.length; index++) {
+
+                  this.res.push(response[index])
+                  // this.data = [...response[index]];
+                  // console.log('reponse', this.res.length);
+                  // console.log('reponse', this.res);
+
+                  //   this.newArr[index].Emetteur =this.res[index]["0"].emt;
+                  //   this.newArr[index].Badge = this.res[index]["0"].modele;
+
+                  //   // console.log('es1',this.res[index]["0"].modele);
+                  //   this.tables[i].Emetteur =this.res[index]["0"].emt;
+                  //   this.tables[i].Badge = this.res[index]["0"].modele;
+
+                  //   console.log('es2',Object.getOwnPropertyNames(this.tables));
+                  this.tables[i+index].Emetteur = response[index]["0"].emt;
+                  this.tables[i+index].Badge = response[index]["0"].modele;
+                  // console.log(this.res[index]["0"].emt)
+                  // console.log(response[index])
+
+                  // console.log(response[index]["0"].emt)
+
                   
-                  this.res.push( response[index])
-                  
-                  this.newArr[index].Emetteur =this.res[index]["0"].emt;
-                  this.newArr[index].Badge = this.res[index]["0"].modele;
-                  
-                  // console.log('es1',this.res[index]["0"].modele);
-                  this.tables[index].Emetteur =this.res[index]["0"].emt;
-                  this.tables[index].Badge = this.res[index]["0"].modele;
-                  
-                  // console.log('es2',Object.getOwnPropertyNames(newArr));
                 }
-                console.log('es1',this.newArr);
+
+                // console.log('tables', this.tables);
                 
                 // console.log('reponse',  Object.values(this.res));
                 // console.log('reponse',  this.res[0].emt);
                 // for (const [key, value] of Object.entries(this.res)) {
-                //   console.log(`${key}: ${value}`);
-                // }
+                  //   console.log(`${key}: ${value}`);
+                  // }
+                  
+                  // console.log('reponse',response);
+                }
                 
-                // console.log('reponse',response);
-              }
-
-            },
+              },
               (error) => {
                 console.log(error);
               }
-            );
-
-          // }
-
-        }
+              );
+              
+            }
+            
+          }
+          // console.log('res',this.res);
+          console.log('tables', this.tables);
       }
       reader.readAsArrayBuffer(file);
     }
