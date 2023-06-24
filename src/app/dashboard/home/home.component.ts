@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { read, utils, writeFile } from 'xlsx';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   res:any[]=[]
   constructor(
     private efccmservice: EfccmService,
+    private cdr: ChangeDetectorRef
   ) { }
 
 
@@ -145,6 +146,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cdr.detectChanges();
   }
 }
 
