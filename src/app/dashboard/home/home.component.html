@@ -103,11 +103,11 @@
                 </thead>
                 <tbody>
                     <!-- <ng-container *ngIf="tables.length; else elseBlock"> -->
-                        <tr *ngFor="let table of tables; let i = index">
+                        <tr *ngFor="let table of res; let i = index">
                             <th scope="row">{{ i + 1 }}</th>
                             <!-- <td>{{ table.table }}</td> -->
-                            <td>{{ table.Badge }}</td>
-                            <td>{{ table.Emetteur }}</td>
+                            <td>{{ table[0].emt }}</td>
+                            <td>{{ table[0].modele }}</td>
                             <!-- <td>{{ movie.Director }}</td>
                             <td><span class="badge bg-warning text-dark">{{ movie.Rating }}</span></td> -->
                         </tr>
@@ -120,7 +120,16 @@
                 </tbody>
             </table>
         </perfect-scrollbar>
-        'resultat' {{res}}
+       
         </div>
     </div>
 </div>
+
+<!-- <ul>
+    <li *ngFor="let book of res; let index = index;">
+        <span>{{ index }}</span>
+        <span>:</span>
+        <span>{{ book[0].emt }}</span>
+        <span>{{ book[0].modele }}</span>
+    </li>
+</ul> -->
