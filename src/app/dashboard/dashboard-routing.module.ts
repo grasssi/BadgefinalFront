@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { ParkingComponent } from '../parking/parking.component';
 
 export const DashboardRoutes: Routes = [
     {
@@ -33,6 +34,10 @@ export const DashboardRoutes: Routes = [
             {
                 path: 'badge',
                 loadChildren: () => import('./badge/badge.module').then(m => m.BadgeModule)
+            },
+            {
+                path: 'parking',
+                component: ParkingComponent
             },
         ]
     }

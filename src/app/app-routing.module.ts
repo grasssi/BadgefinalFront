@@ -25,6 +25,7 @@ const appRoutes: Routes = [
     path: 'not-found',
     component: NotFoundComponent,
   },
+  { path: 'paking', loadChildren: () => import('./parking/parking.module').then(m => m.ParkingModule) },
   
   {
     path: '**',

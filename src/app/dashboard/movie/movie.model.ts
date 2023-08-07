@@ -34,6 +34,7 @@ export interface Movie {
     badge:string;
     emt:string;
     modele:string;
+    arking:string;
 }
 
 interface BelongsToCollection {
